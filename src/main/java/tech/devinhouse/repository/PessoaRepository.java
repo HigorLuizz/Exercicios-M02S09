@@ -9,8 +9,11 @@ import java.util.List;
 
 @Repository
 public interface PessoaRepository extends JpaRepository<PessoaEntity, Long> {
-    @Query("select p from pessoas p where p.status=true")
-    List<PessoaEntity> findByStatus();
+//    @Query("select p from PessoaEntity p where p.status=true")
+//    List<PessoaEntity> findByStatus();
+    List<PessoaEntity> findByStatus(Boolean status);
 
     List<PessoaEntity> findByName(String name);
+    @Query(value="select * from pessoas where name like %:filter% or email like %:filter%", nativeQuery = true)
+    List<PessoaEntity> buscarPorNomeOuEmail(String filter);
 }

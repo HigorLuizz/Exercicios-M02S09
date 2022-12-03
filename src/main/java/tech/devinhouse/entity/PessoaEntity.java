@@ -15,7 +15,7 @@ public class PessoaEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    //Se o nome da coluna do banco de dados não for igual ao nome do atributo, colocar o @Column
     @Column(name = "name")
     @NotNull
     private String name;
